@@ -1,0 +1,10 @@
+font-size = 16
+font-family = "CaskaydiaCove Nerd Font Mono"
+
+background-opacity = 0.8
+background = #000000
+theme = rose-pine
+
+gtk-adwaita = true
+gtk-titlebar = false
+window-decoration = server
