@@ -84,7 +84,7 @@
     oh-my-posh
 
     # steam / gaming
-    protonup
+    protonup # run protonup
     prismlauncher # minecraft
 
     # apps
@@ -114,7 +114,6 @@
   programs.neovim.enable = true;
   programs.neovim.defaultEditor = true;
 
-  # git config --global --add safe.directory /etc/nixos
   # git config --global init.defaultBranch main
   # git config --global user.email "ag.ayeareem@gmail.com"
   # git config --global user.name "AyeAreEm"
