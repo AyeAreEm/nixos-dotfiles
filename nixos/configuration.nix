@@ -74,6 +74,7 @@
     unzip
     file
     btop
+    fastfetch
 
     # system
     rofi
