@@ -92,6 +92,8 @@
     discord
     firefox
     spotify
+    gimp
+    libreoffice-qt
 
     # dev
     vim

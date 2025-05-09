@@ -35,10 +35,10 @@ window#waybar.hidden {
     border-bottom: 3px solid #ffffff;
 }
 
-#window,
 #workspaces,
 #clock,
 #battery,
+#network,
 #pulseaudio {
     padding: 0 15px;
     margin-right: 8px;
@@ -47,23 +47,23 @@ window#waybar.hidden {
     background-color: #232136;
 }
 
-
-#clock.date {
-    color: #eb6f92;
-    margin-right: 8px;
+#network {
+    color: #908caa;
 }
 
 #battery {
     color: #ea9a97;
-    margin-right: 8px;
 }
 
 #pulseaudio {
     color: #9ccfd8;
-    margin-right: 8px;
 }
 
 #clock { 
     color: #3e8fb0;
-    margin-right: 0;
+}
+
+#clock.date {
+    color: #eb6f92;
+    margin-right: 0px;
 }

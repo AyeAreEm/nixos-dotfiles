@@ -1,10 +1,26 @@
 {
     "position": "top",
-    "margin": "0 10 0 10",
+    "margin": "5 10 0 10",
     "spacing": 0, 
-    "modules-left": ["hyprland/workspaces"],
-    "modules-center": ["clock#date"],
-    "modules-right": ["battery", "pulseaudio", "clock"],
+    "modules-left": ["hyprland/workspaces", "network"],
+    "modules-center": ["hyprland/window"],
+    "modules-right": ["battery", "pulseaudio", "clock", "clock#date"],
+    "network": {
+        "format": "{ifname}",
+        "tooltip-format": "{ifname} via {gwaddr}",
+
+        "format-wifi": "\udb81\udda9  {essid}",
+        "tooltip-format-wifi": "{essid}",
+
+        "format-ethernet": "\udb80\ude01",
+        "tooltip-format-ethernet": "{ipaddr}/{cidr}",
+
+        "format-disconnected": "\udb85\udeb5",
+        "tooltip-format-disconnected": "no connection",
+
+        "format-disabled": "\udb81\uddaa",
+        "tooltip-format-disabled": "off"
+    },
     "hyprland/workspaces": {
         "format": "{icon}",
         "on-click": "activate",
@@ -22,6 +38,9 @@
             "9": "9",
             "10": "10",
         },
+    },
+    "hyprland/window": {
+        "format": "{}"
     },
     "clock#date": {
         "format": "  {:%A, %b %d}",
