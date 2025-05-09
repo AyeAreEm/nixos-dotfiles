@@ -75,6 +75,8 @@
     file
     btop
     fastfetch
+    playerctl
+    brightnessctl
 
     # system
     rofi
