@@ -74,6 +74,7 @@
     unzip
     file
     btop
+    yazi
     fastfetch
     playerctl
     brightnessctl
@@ -95,6 +96,7 @@
     firefox
     spotify
     gimp
+    vlc
     libreoffice-qt
 
     # dev
@@ -114,6 +116,15 @@
   programs.steam.gamescopeSession.enable = true;
   programs.gamemode.enable = true;
   environment.sessionVariables.STEAM_EXTRA_COMPAT_TOOLS_PATHS = "/home/adrian/.steam/root/compatibilitytools.d";
+
+  # obs
+  programs.obs-studio = {
+    enable = true;
+    plugins = with pkgs.obs-studio-plugins; [
+        wlrobs
+        obs-pipewire-audio-capture
+    ];
+  };
 
   # neovim
   programs.neovim.enable = true;
