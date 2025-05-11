@@ -44,23 +44,36 @@
 
   nixpkgs.config.allowUnfree = true;
 
-  # don't touch, tried to remove but it breaks... i think it's because my login thing actually uses xserver instead of hyprland
+  # don't touch, tried to remove but it breaks... don't be fooled by the 'xserver' field
   services.xserver = {
     enable = true;
     xkb.layout = "us";
     videoDrivers = ["nvidia"];
   };
 
+  # ly display manager
+  services.displayManager.ly.enable = true;
+
   # nvidia drivers, don't touch
   hardware = {
+    graphics.enable = true;
+
     nvidia = {
       modesetting.enable = true;
       open = true;
       nvidiaSettings = true;
       package = config.boot.kernelPackages.nvidiaPackages.stable;
-    };
 
-    graphics.enable = true;
+      prime = {
+        offload = {
+          enable = true;
+          enableOffloadCmd = true;
+        };
+        
+        intelBusId = "PCI:0:2:0";
+        nvidiaBusId = "PCI:0:1:0";
+      };
+    };
 
     bluetooth.enable = true;
     bluetooth.powerOnBoot = true;
@@ -109,6 +122,7 @@
 
   # hyprland
   programs.hyprland.enable = true;
+  programs.xwayland.enable = true; # to get xorg apps working on wayland
   environment.sessionVariables.NIXOS_OZONE_WL = "1"; # for electron apps
 
   # steam
