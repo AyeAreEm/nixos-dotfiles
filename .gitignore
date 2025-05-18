@@ -7,3 +7,10 @@ libreoffice/
 GIMP/
 obs-studio/
 vlc/
+kdenlive-layoutsrc
+kdenliverc
+kde.org/
+gtk-2.0/
+dolphinrc
+QtProject.conf
+session/

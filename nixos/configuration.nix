@@ -109,8 +109,11 @@
     firefox
     spotify
     gimp
-    vlc
+    mpv # used to use vlc
     libreoffice-qt
+    kdePackages.qtsvg
+    kdePackages.kdenlive
+    kdePackages.dolphin
 
     # dev
     vim
