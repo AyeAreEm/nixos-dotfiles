@@ -93,7 +93,7 @@
     brightnessctl
 
     # system
-    rofi
+    rofi-wayland
     hyprpaper
     waybar
     grim
