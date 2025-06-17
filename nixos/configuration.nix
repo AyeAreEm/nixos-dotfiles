@@ -6,6 +6,12 @@
       ./hardware-configuration.nix
     ];
 
+  nix.nixPath = [
+    "nixpkgs=/nix/var/nix/profiles/per-user/root/channels/nixos"
+    "nixos-config=${config.users.users.adrian.home}/.config/nixos/configuration.nix"
+    "/nix/var/nix/profiles/per-user/root/channels"
+  ];
+
   # bootloader
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -88,6 +94,7 @@
     file
     btop
     yazi
+    ripgrep
     fastfetch
     playerctl
     brightnessctl

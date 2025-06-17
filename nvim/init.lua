@@ -2,12 +2,9 @@
 -- thank you for the completion and snippet stuff, absolute nightmare without this repo^
 
 vim.opt.number = true
+vim.opt.relativenumber = true
 vim.opt.laststatus = 3
 vim.opt.ignorecase = true
-
-vim.cmd([[
-set number relativenumber
-]])
 
 -- tab key
 vim.opt.expandtab = true
@@ -28,7 +25,7 @@ function lazy.install(path)
             'clone',
             '--filter=blob:none',
             'https://github.com/folke/lazy.nvim.git',
-            '--branch=stable', -- latest stable release
+            '--branch=stable',
             path,
         })
     end
@@ -51,69 +48,71 @@ lazy.path = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
 lazy.opts = {}
 
 lazy.setup({
-    {'neovim/nvim-lspconfig'},             -- LSP configurations
-    {'williamboman/mason.nvim'},           -- Installer for external tools
-    {'williamboman/mason-lspconfig.nvim'}, -- mason extension for lspconfig
-    {'hrsh7th/nvim-cmp'},                  -- Autocomplete engine
-    {'hrsh7th/cmp-nvim-lsp'},              -- Completion source for LSP
-    {'L3MON4D3/LuaSnip'},                  -- Snippet engine
+    {'neovim/nvim-lspconfig'},
+    {'williamboman/mason.nvim'},
+    {'williamboman/mason-lspconfig.nvim'},
+    {'hrsh7th/nvim-cmp'},
+    {'hrsh7th/cmp-nvim-lsp'},
+    {'L3MON4D3/LuaSnip'},
     {'nvim-tree/nvim-web-devicons'},
     {
-	    "rose-pine/neovim",
-		name = "rose-pine",
-		config = function()
-			require('rose-pine').setup({
-			variant = 'moon',
-			disable_background = true,
-			disable_italics = true
+        "rose-pine/neovim",
+        name = "rose-pine",
+        config = function()
+            require('rose-pine').setup({
+                variant = 'moon',
+                styles = {
+                    transparency = true,
+                },
+                -- disable_background = true,
+                disable_italics = true
+            })
+        vim.cmd([[colorscheme rose-pine]])
+        end,
+    },
+    {
+        'echasnovski/mini.pairs',
+        version = false,
+        config = function()
+            require('mini.pairs').setup()
+        end
+    },
+    {
+        'numToStr/Comment.nvim',
+        lazy = false,
+        config = function()
+            require('Comment').setup()
+        end
+    },
+    {
+        "nvim-treesitter/nvim-treesitter",
+        build = ":TSUpdate",
+        config = function () 
+            local configs = require("nvim-treesitter.configs")
 
-			})
-			vim.cmd([[colorscheme rose-pine]])
-		end,
+            configs.setup({
+                ensure_installed = { },
+                sync_install = false,
+                highlight = { enable = true },
+            })
+        end
     },
     {
-		'echasnovski/mini.pairs',
-		version = false,
-		config = function()
-			require('mini.pairs').setup()
-		end
+        'nvim-telescope/telescope.nvim', tag = '0.1.5',
+        dependencies = { 'nvim-lua/plenary.nvim' },
+        config = function()
+            require('telescope').setup()
+            local tele = require('telescope.builtin')
+            vim.keymap.set('n', '<Space>ff', tele.find_files, {})
+            vim.keymap.set('n', '<Space>gf', tele.git_files, {})
+            vim.keymap.set('n', '<Space>fg', tele.live_grep, {}) -- make sure ripgrep is installed
+        end
     },
     {
-	'numToStr/Comment.nvim',
-	lazy = false,
-	config = function()
-	    require('Comment').setup()
-	end
-    },
-    {
-		"nvim-treesitter/nvim-treesitter",
-		build = ":TSUpdate",
-		config = function () 
-		  local configs = require("nvim-treesitter.configs")
-
-		  configs.setup({
-			  ensure_installed = { "c", "lua", "javascript", "typescript", "html", "rust" },
-			  sync_install = false,
-			  highlight = { enable = true },
-			})
-		end
-    },
-    {
-		'nvim-telescope/telescope.nvim', tag = '0.1.5',
-		dependencies = { 'nvim-lua/plenary.nvim' },
-		config = function()
-			require('telescope').setup()
-			local tele = require('telescope.builtin')
-			vim.keymap.set('n', '<Space>ff', tele.find_files, {})
-			vim.keymap.set('n', '<Space>gf', tele.git_files, {})
-			vim.keymap.set('n', '<Space>fg', tele.live_grep, {}) -- make sure ripgrep is installed
-		end
-    },
-    {
-		"ThePrimeagen/harpoon",
-		branch = "harpoon2",
-		dependencies = { "nvim-lua/plenary.nvim" },
-		config = function()
+        "ThePrimeagen/harpoon",
+        branch = "harpoon2",
+        dependencies = { "nvim-lua/plenary.nvim" },
+        config = function()
             local harpoon = require('harpoon')
             harpoon:setup()
 
@@ -124,7 +123,7 @@ lazy.setup({
             vim.keymap.set("n", "<C-j>", function() harpoon:list():select(2) end)
             vim.keymap.set("n", "<C-k>", function() harpoon:list():select(3) end)
             vim.keymap.set("n", "<C-l>", function() harpoon:list():select(4) end)
-		end
+        end
     },
     {
         "stevearc/oil.nvim",
@@ -150,9 +149,17 @@ lazy.setup({
             require("lualine").setup({
                 options = {
                     theme = "auto",
-                    section_separators = '',
+                    -- section_separators = '',
                     component_separators = '',
-                }
+                },
+                sections = {
+                    lualine_a = {'mode'},
+                    lualine_b = {'branch', 'diff', 'diagnostics'},
+                    lualine_c = {},
+                    lualine_x = {},
+                    lualine_y = {'filename'},
+                    lualine_z = {'location'}
+                },
             })
         end,
     },
