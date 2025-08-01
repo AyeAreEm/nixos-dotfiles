@@ -124,6 +124,7 @@
 
     # dev
     vim
+    tmux
     ghostty
 
     # languages

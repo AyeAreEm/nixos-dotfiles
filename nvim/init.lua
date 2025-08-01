@@ -16,6 +16,11 @@ vim.cmd('set nowrap')
 
 vim.keymap.set('t', '<esc>', '<C-\\><C-N>', {silent = true})
 
+vim.cmd('autocmd BufRead,BufNewFile *.porth set filetype=porth')
+
+-- lsp argument hints
+-- vim.lsp.inlay_hint.enable(true)
+
 local lazy = {}
 
 function lazy.install(path)
@@ -118,11 +123,6 @@ lazy.setup({
 
             vim.keymap.set("n", "<Space>a", function() harpoon:list():append() end)
             vim.keymap.set("n", "<C-e>", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end)
-
-            vim.keymap.set("n", "<C-h>", function() harpoon:list():select(1) end)
-            vim.keymap.set("n", "<C-j>", function() harpoon:list():select(2) end)
-            vim.keymap.set("n", "<C-k>", function() harpoon:list():select(3) end)
-            vim.keymap.set("n", "<C-l>", function() harpoon:list():select(4) end)
         end
     },
     {
@@ -163,6 +163,24 @@ lazy.setup({
             })
         end,
     },
+    {
+        "christoomey/vim-tmux-navigator",
+        cmd = {
+            "TmuxNavigateLeft",
+            "TmuxNavigateDown",
+            "TmuxNavigateUp",
+            "TmuxNavigateRight",
+            "TmuxNavigatePrevious",
+            "TmuxNavigatorProcessList",
+        },
+        keys = {
+            { "<c-h>", "<cmd><C-U>TmuxNavigateLeft<cr>" },
+            { "<c-j>", "<cmd><C-U>TmuxNavigateDown<cr>" },
+            { "<c-k>", "<cmd><C-U>TmuxNavigateUp<cr>" },
+            { "<c-l>", "<cmd><C-U>TmuxNavigateRight<cr>" },
+            { "<c-\\>", "<cmd><C-U>TmuxNavigatePrevious<cr>" },
+        },
+    }
 })
 
 local cmp = require('cmp')
