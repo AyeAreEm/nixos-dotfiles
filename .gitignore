@@ -4,6 +4,8 @@ pulse/
 spotify/
 btop/btop.log
 libreoffice/
+libresprite/
+godot/
 GIMP/
 obs-studio/
 vlc/
@@ -14,12 +16,16 @@ kdenlive-layoutsrc
 kdenliverc
 kde.org/
 dolphinrc
-
+glib-2.0/
 gtk-2.0/
+gtk-3.0/
 QtProject.conf
 session/
 Vampire_Survivors*/
 trashrc
 unity3d/
+Electron/
+ibus/
+mpv/
 
 tmux/plugins/

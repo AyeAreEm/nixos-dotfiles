@@ -13,8 +13,14 @@
   ];
 
   # bootloader
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
+  boot = {
+    loader.systemd-boot.enable = true;
+    loader.efi.canTouchEfiVariables = true;
+    extraModulePackages = with config.boot.kernelPackages; [ xpadneo ];
+    extraModprobeConfig = ''
+      options bluetooth diasable_ertm=Y
+    '';
+  };
 
   networking.hostName = "nixos";
   networking.networkmanager.enable = true; # nmcli dev wifi con <ssid-name> password <password>
@@ -81,9 +87,19 @@
       };
     };
 
-    bluetooth.enable = true;
-    bluetooth.powerOnBoot = true;
+    bluetooth = {
+      enable = true;
+      powerOnBoot = true;
+      settings = {
+        General = {
+            Enable = "Source,Sink,Media,Socket";
+            AutoEnable = "true";
+            ControllerMode = "bredr";
+        };
+      };
+    };
   };
+  services.blueman.enable = true;
 
   # setup apps n stuff
   environment.systemPackages = with pkgs; [
@@ -121,6 +137,8 @@
     kdePackages.qtsvg
     kdePackages.kdenlive
     kdePackages.dolphin
+    libresprite
+    godot_4
 
     # dev
     vim
