@@ -118,6 +118,8 @@
     # system
     rofi-wayland
     hyprpaper
+    hyprcursor
+    bibata-cursors
     waybar
     grim
     slurp
@@ -139,6 +141,7 @@
     kdePackages.dolphin
     libresprite
     godot_4
+    nwg-look
 
     # dev
     vim

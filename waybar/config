@@ -1,15 +1,15 @@
 {
     "position": "top",
-    "margin": "5 10 0 10",
+    "margin": "10 10 0 10",
     "spacing": 0, 
-    "modules-left": ["hyprland/workspaces", "network"],
+    "modules-left": ["hyprland/workspaces", "clock"],
     "modules-center": ["hyprland/window"],
-    "modules-right": ["battery", "pulseaudio", "clock", "clock#date"],
+    "modules-right": ["network", "pulseaudio", "battery"],
     "network": {
         "format": "{ifname}",
         "tooltip-format": "{ifname} via {gwaddr}",
 
-        "format-wifi": "\udb81\udda9  {essid}",
+        "format-wifi": "󰤢  {essid}",
         "tooltip-format-wifi": "{essid}",
 
         "format-ethernet": "\udb80\ude01",
@@ -42,10 +42,6 @@
     "hyprland/window": {
         "format": "{}"
     },
-    "clock#date": {
-        "format": "  {:%A, %b %d}",
-        "tooltip": false,
-    },
     "battery": {
         "format": "{icon}  {capacity}%",
         "format-icons": ["", "", "", "", ""],
@@ -60,7 +56,7 @@
         "ignored-sinks": ["Easy Effects Sink"],
     },
     "clock": {
-        "format": "󰥔  {:%I:%M%p}",
+        "format": "󰥔  {:%I:%M  -  %a %b %d}",
         "tooltip": false,
     },
     "sort-by-number": true,

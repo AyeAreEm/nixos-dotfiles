@@ -30,25 +30,15 @@ window#waybar.hidden {
     color: #f6c177;
 }
 
-#mode {
-    background-color: #64727D;
-    border-bottom: 3px solid #ffffff;
-}
-
 #workspaces,
 #clock,
 #battery,
 #network,
 #pulseaudio {
-    padding: 0 15px;
+    padding: 0 14px;
     margin-right: 8px;
-    border-radius: 10px;
-    border: 2px solid #c4a7e7;
+    border-radius: 20px;
     background-color: #232136;
-}
-
-#network {
-    color: #908caa;
 }
 
 #battery {
@@ -56,14 +46,13 @@ window#waybar.hidden {
 }
 
 #pulseaudio {
-    color: #9ccfd8;
-}
-
-#clock { 
     color: #3e8fb0;
 }
 
-#clock.date {
+#clock { 
+    color: #c4a7e7;
+}
+
+#network {
     color: #eb6f92;
-    margin-right: 0px;
 }
