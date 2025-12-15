@@ -60,7 +60,8 @@
   services.xserver = {
     enable = true;
     xkb.layout = "us";
-    videoDrivers = ["nvidia"];
+    videoDrivers = [ "nvidia" ];
+    excludePackages = [ pkgs.xterm ];
   };
 
   # ly display manager
@@ -103,6 +104,16 @@
 
   # setup apps n stuff
   environment.systemPackages = with pkgs; [
+    (writeShellScriptBin "bg-switch" ''
+        if [ "$1" == "bb" ]; then
+            hyprctl hyprpaper preload "~/.config/hypr/bb.jpg" & hyprctl hyprpaper wallpaper ", ~/.config/hypr/bb.jpg"
+        elif [ "$1" == "sk" ]; then
+            hyprctl hyprpaper preload "~/.config/hypr/sk.jpg" & hyprctl hyprpaper wallpaper ", ~/.config/hypr/sk.jpg"
+        else
+            echo unknown "$1"
+        fi
+    '')
+
     # cli 
     wget
     curl

@@ -16,6 +16,10 @@ kdenlive-layoutsrc
 kdenliverc
 kde.org/
 dolphinrc
+filetypesrc
+kiorc
+mimeapps.list
+
 glib-2.0/
 QtProject.conf
 session/
