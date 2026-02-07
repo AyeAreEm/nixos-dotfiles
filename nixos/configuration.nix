@@ -153,6 +153,7 @@
     libresprite
     godot_4
     nwg-look
+    streamcontroller
 
     # dev
     vim

@@ -1,10 +1,9 @@
--- https://github.com/VonHeikemen/nvim-starter/blob/xx-mason/init.lua
--- thank you for the completion and snippet stuff, absolute nightmare without this repo^
-
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.laststatus = 3
 vim.opt.ignorecase = true
+vim.opt.smartcase = true
+vim.opt.wrap = false
 
 -- tab key
 vim.opt.expandtab = true
@@ -12,14 +11,7 @@ vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
 
-vim.cmd('set nowrap')
-
 vim.keymap.set('t', '<esc>', '<C-\\><C-N>', {silent = true})
-
-vim.cmd('autocmd BufRead,BufNewFile *.porth set filetype=porth')
-
--- lsp argument hints
--- vim.lsp.inlay_hint.enable(true)
 
 local lazy = {}
 
